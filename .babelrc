@@ -1,0 +1,16 @@
+{
+  "presets": ["@babel/preset-env", "@babel/preset-react"],
+  "plugins": [
+    "@babel/plugin-proposal-class-properties",
+    ["module-resolver", {
+      "root": ["src"],
+      "extensions": [".ios.js", ".android.js", ".js", ".json"],
+      "alias": {
+        "@components": "./src/components",
+        "@styles": "./src/assets/styles",
+        "@images": "./src/assets/images",
+        "@routes": "./src/routes"
+      }
+    }]
+  ]
+}
