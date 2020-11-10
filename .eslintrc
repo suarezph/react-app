@@ -1,11 +1,14 @@
 {
   "parser": "babel-eslint",
-  "extends": ["airbnb", "prettier"],
-  "plugins": ["prettier"],
+  "extends": ["airbnb", "prettier", "prettier/react"],
+  "plugins": ["prettier", "react"],
   "rules": {
     "prettier/prettier": ["error"],
     "semi": ["error", "never"],
-    "react/no-unknown-property": [0],
+    "camelcase": ["off"],
+    "react/no-unknown-property": 0,
+    "import/no-unresolved": 0,
+    "no-control-regex": 0,
     "react/jsx-filename-extension": [1,{"extensions": [".js", "jsx"]}]
   },
   "env": {
@@ -13,10 +16,7 @@
   },
   "settings": {
     "import/resolver": {
-      "node": {
-        "paths": ["@styles", "@styles"],
-        "extensions": [".js", ".svg", ".scss"]
-      }
+      "alias": true
     }
   }
 }

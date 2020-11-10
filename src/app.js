@@ -1,17 +1,16 @@
 import React from 'react'
+import { BrowserRouter as Router } from 'react-router-dom'
+import { FullPageSpinner } from './components/FallbackComponents'
 
-import bookPlaceholderSvg from '@images/book-placeholder.svg'
-import '@styles/styles.scss'
+const AuthenticatedApp = React.lazy(() => import('./screens/auth'))
 
 function App() {
   return (
-    <div class="box">
-      <h3>Our Application Is Alive</h3>
-      <p>This isn’t reality. This — is fantasy.</p>
-      <p>
-        <img src={bookPlaceholderSvg} alt="book" />
-      </p>
-    </div>
+    <React.Suspense fallback={<FullPageSpinner />}>
+      <Router>
+        <AuthenticatedApp />
+      </Router>
+    </React.Suspense>
   )
 }
 
