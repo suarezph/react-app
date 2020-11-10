@@ -9,7 +9,7 @@ function App() {
       <h3>Our Application Is Alive</h3>
       <p>This isn’t reality. This — is fantasy.</p>
       <p>
-        <img src={bookPlaceholderSvg} />
+        <img src={bookPlaceholderSvg} alt="book" />
       </p>
     </div>
   )
