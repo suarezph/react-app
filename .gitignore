@@ -1,2 +1,8 @@
+# Global Packages
 node_modules
+
+# React Builds
+build
+
+# Mac extension
 .DS_Store

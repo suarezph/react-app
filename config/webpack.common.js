@@ -15,6 +15,11 @@ module.exports = {
     publicPath: '/',
   },
 
+  // Resolve extension for jsx
+  resolve: {
+    extensions: ['*', '.js', '.jsx'],
+  },
+
   // Customize the webpack build process
   plugins: [
     // Removes/cleans build folders and unused assets when rebuilding
@@ -25,9 +30,9 @@ module.exports = {
       patterns: [
         {
           from: paths.public,
-          to: 'assets',
+          to: '.',
           globOptions: {
-            ignore: ['*.DS_Store'],
+            ignore: ['*.DS_Store', 'index.html'],
           },
         },
       ],
@@ -46,24 +51,31 @@ module.exports = {
   module: {
     rules: [
       // JavaScript: Use Babel to transpile JavaScript files
-      {test: /\.js$/, exclude: /node_modules/, use: ['babel-loader']},
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: ['babel-loader', 'eslint-loader'],
+      },
 
       // Styles: Inject CSS into the head with source maps
       {
         test: /\.(scss|css)$/,
         use: [
           'style-loader',
-          {loader: 'css-loader', options: {sourceMap: true, importLoaders: 1}},
-          {loader: 'postcss-loader', options: {sourceMap: true}},
-          {loader: 'sass-loader', options: {sourceMap: true}},
+          {
+            loader: 'css-loader',
+            options: { sourceMap: true, importLoaders: 1 },
+          },
+          { loader: 'postcss-loader', options: { sourceMap: true } },
+          { loader: 'sass-loader', options: { sourceMap: true } },
         ],
       },
 
       // Images: Copy image files to build folder
-      {test: /\.(?:ico|gif|png|jpg|jpeg)$/i, type: 'asset/resource'},
+      { test: /\.(?:ico|gif|png|jpg|jpeg)$/i, type: 'asset/resource' },
 
       // Fonts and SVGs: Inline files
-      {test: /\.(woff(2)?|eot|ttf|otf|svg|)$/, type: 'asset/inline'},
+      { test: /\.(woff(2)?|eot|ttf|otf|svg|)$/, type: 'asset/inline' },
     ],
   },
 }
