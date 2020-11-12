@@ -2,17 +2,17 @@ import React from 'react'
 import { FullPageSpinner } from './components/fallback'
 import { useAuth } from './context/auth-context'
 
-const AuthenticatedApp = React.lazy(() =>
-  import(/* webpackPrefetch: true */ './screens/auth')
+const PrivateApp = React.lazy(() =>
+  import(/* webpackPrefetch: true */ './screens/private-app')
 )
-const UnauthenticatedApp = React.lazy(() => import('./screens/de-auth'))
+const PublicApp = React.lazy(() => import('./screens/public-app'))
 
 function App() {
   const { user } = useAuth()
 
   return (
     <React.Suspense fallback={<FullPageSpinner />}>
-      {user ? <AuthenticatedApp /> : <UnauthenticatedApp />}
+      {user ? <PrivateApp /> : <PublicApp />}
     </React.Suspense>
   )
 }

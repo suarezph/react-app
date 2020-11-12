@@ -5,19 +5,7 @@ import Dashboard from '@screens/dashboard'
 import Support from '@screens/support'
 import NotFoundScreen from '@screens/errors/not-found'
 
-export const AuthenticatedRoutes = {
-  LOGIN: '/login',
-  REGISTER: '/register',
-  DASHBOARD: '/dashboard',
-  SUPPORT: '/support',
-}
-
-export const Layouts = {
-  WIDE: 'wide',
-  MASTER: 'master',
-}
-
-function AppRoutes() {
+function PrivateRoutes() {
   return (
     <Switch>
       <Route key="dashboard" path="/dashboard" component={Dashboard} />
@@ -27,4 +15,4 @@ function AppRoutes() {
   )
 }
 
-export default AppRoutes
+export default PrivateRoutes
