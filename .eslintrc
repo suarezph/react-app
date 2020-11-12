@@ -9,6 +9,8 @@
     "react/no-unknown-property": 0,
     "import/no-unresolved": 0,
     "no-control-regex": 0,
+    "no-else-return": ["error", {"allowElseIf": false}],
+    "no-return-assign": ["error", "always"],
     "react/jsx-filename-extension": [1,{"extensions": [".js", "jsx"]}]
   },
   "env": {

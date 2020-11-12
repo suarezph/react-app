@@ -6,12 +6,10 @@ import NotFoundScreen from '@screens/errors/not-found'
 
 function AppRoutes() {
   return (
-    <>
-      <Routes>
-        <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="*" element={<NotFoundScreen />} />
-      </Routes>
-    </>
+    <Routes>
+      <Route path="/dashboard" element={<Dashboard />} />
+      <Route path="*" element={<NotFoundScreen />} />
+    </Routes>
   )
 }
 

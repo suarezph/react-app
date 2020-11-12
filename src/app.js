@@ -1,15 +1,18 @@
 import React from 'react'
-import { BrowserRouter as Router } from 'react-router-dom'
-import { FullPageSpinner } from './components/FallbackComponents'
+import { FullPageSpinner } from './components/fallback'
+import { useAuth } from './context/auth-context'
 
-const AuthenticatedApp = React.lazy(() => import('./screens/auth'))
+const AuthenticatedApp = React.lazy(() =>
+  import(/* webpackPrefetch: true */ './screens/auth')
+)
+const UnauthenticatedApp = React.lazy(() => import('./screens/deAuth'))
 
 function App() {
+  const { user } = useAuth()
+
   return (
     <React.Suspense fallback={<FullPageSpinner />}>
-      <Router>
-        <AuthenticatedApp />
-      </Router>
+      {user ? <AuthenticatedApp /> : <UnauthenticatedApp />}
     </React.Suspense>
   )
 }
