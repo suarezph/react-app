@@ -1,10 +1,14 @@
+/* eslint no-shadow: [2, { "allow": ["error", "data"] }] */
+/* eslint-env es6 */
 import * as React from 'react'
 
 function useSafeDispatch(dispatch) {
   const mounted = React.useRef(false)
   React.useLayoutEffect(() => {
     mounted.current = true
-    return () => (mounted.current = false)
+    return () => {
+      mounted.current = false
+    }
   }, [])
   return React.useCallback(
     (...args) => (mounted.current ? dispatch(...args) : undefined),
@@ -12,11 +16,6 @@ function useSafeDispatch(dispatch) {
   )
 }
 
-// Example usage:
-// const {data, error, status, run} = useAsync()
-// React.useEffect(() => {
-//   run(fetchaName(pokemonName))
-// }, [name, run])
 const defaultInitialState = { status: 'idle', data: null, error: null }
 function useAsync(initialState) {
   const initialStateRef = React.useRef({

@@ -5,7 +5,7 @@ import { useAuth } from './context/auth-context'
 const AuthenticatedApp = React.lazy(() =>
   import(/* webpackPrefetch: true */ './screens/auth')
 )
-const UnauthenticatedApp = React.lazy(() => import('./screens/deAuth'))
+const UnauthenticatedApp = React.lazy(() => import('./screens/de-auth'))
 
 function App() {
   const { user } = useAuth()

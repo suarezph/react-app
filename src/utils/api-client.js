@@ -1,6 +1,8 @@
+/* eslint no-shadow: [2, { "allow": ["error", "data"] }] */
+/* eslint-env es6 */
 import { queryCache } from 'react-query'
 import * as auth from '../context/auth-provider'
-//const apiURL = process.env.REACT_APP_API_URL
+// const apiURL = process.env.REACT_APP_API_URL
 const apiURL = 'https://devapi.bluecell.global/v1'
 
 async function client(
@@ -23,18 +25,18 @@ async function client(
     .then(async (response) => {
       if (response.status === 401) {
         queryCache.clear()
-        // await auth.logout()
+        await auth.logout()
         // refresh the page for them
         window.location.assign(window.location)
-        return Promise.reject({ message: 'Please re-authenticate.' })
+        return Promise.reject(new Error({ message: 'Please re-authenticate.' }))
       }
       const data = await response.json()
       if (response.ok) {
         return data
-      } else {
-        return Promise.reject(data)
       }
+
+      return Promise.reject(data)
     })
 }
 
-export { client }
+export { client as default }

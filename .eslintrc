@@ -11,7 +11,8 @@
     "no-control-regex": 0,
     "no-else-return": ["error", {"allowElseIf": false}],
     "no-return-assign": ["error", "always"],
-    "react/jsx-filename-extension": [1,{"extensions": [".js", "jsx"]}]
+    "react/jsx-filename-extension": [1,{"extensions": [".js", "jsx"]}],
+    "react/jsx-props-no-spreading": "off"
   },
   "env": {
     "browser": true

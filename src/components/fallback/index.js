@@ -1,5 +1,6 @@
 import React from 'react'
 import Spinner from '@images/spinner.png'
+import PropTypes from 'prop-types'
 
 function FullPageSpinner() {
   return (
@@ -12,10 +13,14 @@ function FullPageSpinner() {
 function FullPageErrorFallback({ error }) {
   return (
     <div>
-      <p>Uh oh... There's a problem. Try refreshing the app.</p>
+      <p>Uh oh... There&apos;s a problem. Try refreshing the app.</p>
       <pre>{error.message}</pre>
     </div>
   )
+}
+
+FullPageErrorFallback.propTypes = {
+  error: PropTypes.oneOfType([PropTypes.object]).isRequired,
 }
 
 export { FullPageSpinner, FullPageErrorFallback }

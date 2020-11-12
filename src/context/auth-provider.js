@@ -1,24 +1,12 @@
-const { default: auth } = require('../screens/auth')
-
+/* eslint no-shadow: [2, { "allow": ["error", "data"] }] */
+/* eslint-env es6 */
 const localStorageKey = '__auth_provider_token__'
 
 async function getToken() {
   return window.localStorage.getItem(localStorageKey)
 }
 
-function handleUserResponse({ data }) {
-  window.localStorage.setItem(localStorageKey, data.access_token)
-}
-
-function login({ email, password}) {
-  return client('login', { email, password, login_type: "member", captcha: "1111" }).then(handleUserResponse)
-}
-
-async function logout() {
-  window.localStorage.removeItem(localStorageKey)
-}
-
-//const authURL = process.env.REACT_APP_API_URL
+// const authURL = process.env.REACT_APP_API_URL
 const authURL = 'https://devapi.bluecell.global/v1'
 
 async function client(endpoint, data) {
@@ -34,10 +22,28 @@ async function client(endpoint, data) {
       const data = await response.json()
       if (response.ok) {
         return data
-      } else {
-        return Promise.reject(data)
       }
+
+      return Promise.reject(data)
     })
+}
+
+function handleUserResponse({ data }) {
+  window.localStorage.setItem(localStorageKey, data.access_token)
+  return data
+}
+
+function login({ email, password }) {
+  return client('login', {
+    email,
+    password,
+    login_type: 'member',
+    captcha: '1111',
+  }).then(handleUserResponse)
+}
+
+async function logout() {
+  window.localStorage.removeItem(localStorageKey)
 }
 
 export { getToken, login, logout, localStorageKey }

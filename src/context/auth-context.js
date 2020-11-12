@@ -1,9 +1,11 @@
+/* eslint no-shadow: [2, { "allow": ["error", "user"] }] */
+/* eslint-env es6 */
 import * as React from 'react'
 import { queryCache } from 'react-query'
-import { client } from '../utils/api-client'
+import { FullPageSpinner, FullPageErrorFallback } from '@components/fallback'
+import client from '../utils/api-client'
 import useAsync from '../utils/hooks'
 import * as auth from './auth-provider'
-import { FullPageSpinner, FullPageErrorFallback } from '@components/fallback'
 
 const AuthContext = React.createContext()
 AuthContext.displayName = 'AuthContext'
@@ -14,7 +16,7 @@ async function bootstrapAppData() {
   const token = await auth.getToken()
   if (token) {
     const data = await client('profile', { token })
-    console.log(data)
+    // console.log(data)
     // queryCache.setQueryData('list-items', data.listItems, {
     //   staleTime: 5000,
     // })
@@ -81,4 +83,13 @@ function useAuth() {
   return context
 }
 
-export { AuthProvider, useAuth }
+function useClient() {
+  const {user} = useAuth()
+  const token = user?.token
+  return React.useCallback(
+    (endpoint, config) => client(endpoint, {...config, token}),
+    [token],
+  )
+}
+
+export { AuthProvider, useAuth, useClient }
