@@ -37,7 +37,6 @@ function handleUserResponse({ data }) {
 }
 
 function login({ email, password }) {
-  console.log(process.env.ENVIRONMENT)
   return client('login', {
     email,
     password,
