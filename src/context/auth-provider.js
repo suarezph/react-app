@@ -6,8 +6,7 @@ async function getToken() {
   return window.localStorage.getItem(localStorageKey)
 }
 
-// const authURL = process.env.REACT_APP_API_URL
-const authURL = 'https://devapi.bluecell.global/v1'
+const authURL = process.env.REACT_APP_API_URL
 
 async function client(endpoint, data) {
   const config = {
@@ -38,6 +37,7 @@ function handleUserResponse({ data }) {
 }
 
 function login({ email, password }) {
+  console.log(process.env.ENVIRONMENT)
   return client('login', {
     email,
     password,

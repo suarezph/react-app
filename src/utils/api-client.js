@@ -2,8 +2,8 @@
 /* eslint-env es6 */
 import { queryCache } from 'react-query'
 import * as auth from '../context/auth-provider'
-// const apiURL = process.env.REACT_APP_API_URL
-const apiURL = 'https://devapi.bluecell.global/v1'
+
+const apiURL = process.env.REACT_APP_API_URL
 
 async function client(
   endpoint,

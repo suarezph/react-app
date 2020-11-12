@@ -8,6 +8,7 @@ const PrivateApp = React.lazy(() =>
 const PublicApp = React.lazy(() => import('./screens/public-app'))
 
 /**
+ * @TODO: fix login and logout redirection
  * we can set a redirection (https://reactrouter.com/web/api/Redirect) instead of PrivateApp and PublicApp
  */
 function App() {

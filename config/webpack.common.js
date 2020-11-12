@@ -1,5 +1,6 @@
 const paths = require('./paths')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const Dotenv = require('dotenv-webpack')
 
 module.exports = {
   // Where webpack looks to start building the bundle
@@ -19,6 +20,16 @@ module.exports = {
 
   // Customize the webpack build process
   plugins: [
+    // set file base on the environment
+    new Dotenv({
+      path: './config/env/.env.' + process.env.NODE_ENV, // load this now instead of the ones in '.env'
+      safe: true, // load '.env.example' to verify the '.env' variables are all set. Can also be a string to a different file.
+      allowEmptyValues: true, // allow empty variables (e.g. `FOO=`) (treat it as empty string, rather than missing)
+      systemvars: true, // load all the predefined 'process.env' variables which will trump anything local per dotenv specs.
+      silent: true, // hide any errors
+      defaults: false, // load '.env.defaults' as the default values if empty.
+    }),
+
     // Generates an HTML file from a template
     // Generates deprecation warning: https://github.com/jantimon/html-webpack-plugin/issues/1501
     new HtmlWebpackPlugin({
