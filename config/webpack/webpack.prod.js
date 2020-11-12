@@ -38,6 +38,8 @@ module.exports = merge(common, {
       filename: 'styles/[name].[contenthash].css',
       chunkFilename: '[id].css',
     }),
+
+    // run build: serve -s build
   ],
   module: {
     rules: [

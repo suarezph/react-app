@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "cross-env NODE_ENV=dev webpack serve --config config/webpack.dev.js",
-    "build": "cross-env NODE_ENV=prod webpack --config config/webpack.prod.js",
+    "start": "cross-env NODE_ENV=dev webpack serve --config config/webpack/webpack.dev.js",
+    "build": "cross-env NODE_ENV=prod webpack --config config/webpack/webpack.prod.js",
     "format": "prettier --write \"**/*.+(js|json|css|md|mdx|html)\""
   },
   "lint-staged": {
