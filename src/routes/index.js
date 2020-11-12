@@ -1,15 +1,29 @@
 import React from 'react'
-import { Routes, Route } from 'react-router-dom'
+import { Switch, Route } from 'react-router-dom'
 
 import Dashboard from '@screens/dashboard'
+import Support from '@screens/support'
 import NotFoundScreen from '@screens/errors/not-found'
+
+export const AuthenticatedRoutes = {
+  LOGIN: '/login',
+  REGISTER: '/register',
+  DASHBOARD: '/dashboard',
+  SUPPORT: '/support',
+}
+
+export const Layouts = {
+  WIDE: 'wide',
+  MASTER: 'master',
+}
 
 function AppRoutes() {
   return (
-    <Routes>
-      <Route path="/dashboard" element={<Dashboard />} />
-      <Route path="*" element={<NotFoundScreen />} />
-    </Routes>
+    <Switch>
+      <Route key="dashboard" path="/dashboard" component={Dashboard} />
+      <Route key="support" path="/support" component={Support} />
+      <Route key="notfoundscreen" path="*" component={NotFoundScreen} />
+    </Switch>
   )
 }
 

@@ -6,7 +6,7 @@ import AppProviders from './context'
 import themes from './themes/default'
 
 /*
- * @Todo
+ * @TODO:
  * Install profiler
  * Install devtools
  */

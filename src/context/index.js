@@ -12,7 +12,6 @@ const queryConfig = {
       if (failureCount < 2) {
         return true
       }
-
       return false
     },
   },

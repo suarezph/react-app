@@ -30,6 +30,10 @@ async function client(endpoint, data) {
 
 function handleUserResponse({ data }) {
   window.localStorage.setItem(localStorageKey, data.access_token)
+  /*
+   * @TODO:
+   * fetch profile here to return then set the data in the context
+   */
   return data
 }
 
