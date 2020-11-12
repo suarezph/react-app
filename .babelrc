@@ -9,6 +9,7 @@
       "alias": {
         "@components": "./src/components",
         "@context": "./src/context",
+        "@utils": "./src/utils",
         "@styles": "./src/assets/styles",
         "@images": "./src/assets/images",
         "@routes": "./src/routes",

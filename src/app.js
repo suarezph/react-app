@@ -7,6 +7,9 @@ const PrivateApp = React.lazy(() =>
 )
 const PublicApp = React.lazy(() => import('./screens/public-app'))
 
+/**
+ * we can set a redirection (https://reactrouter.com/web/api/Redirect) instead of PrivateApp and PublicApp
+ */
 function App() {
   const { user } = useAuth()
 

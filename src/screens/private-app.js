@@ -4,7 +4,7 @@ import { Button } from '@material-ui/core'
 import { useAuth } from '@context/auth-context'
 import PrivateRoutes from '@routes/private-routes'
 
-function auth() {
+function privateApp() {
   const { user, logout } = useAuth()
   return (
     <div>
@@ -29,4 +29,4 @@ function auth() {
   )
 }
 
-export default auth
+export default privateApp
