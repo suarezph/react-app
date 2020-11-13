@@ -2,6 +2,7 @@
 /* eslint-env es6 */
 import * as React from 'react'
 import { queryCache } from 'react-query'
+import { useHistory } from 'react-router-dom'
 import { FullPageSpinner, FullPageErrorFallback } from '@components/fallback'
 import client from '../utils/api-client'
 import useAsync from '../utils/hooks'
@@ -37,6 +38,7 @@ function AuthProvider(props) {
     run,
     setData,
   } = useAsync()
+  const history = useHistory()
 
   React.useEffect(() => {
     const appDataPromise = bootstrapAppData()
@@ -44,11 +46,20 @@ function AuthProvider(props) {
   }, [run])
 
   const login = React.useCallback(
-    (form) => auth.login(form).then((user) => setData(user)),
-    [setData]
+    (form) =>
+      auth.login(form).then((user) => {
+        history.location.pathname = '/'
+        return setData(user)
+      }),
+    [setData, history]
   )
 
   const logout = React.useCallback(() => {
+    // set url to '/'
+    // remove token: auth.logout
+    // clear cache
+    // setData to null in Auth context
+    history.location.pathname = '/'
     auth.logout()
     queryCache.clear()
     setData(null)

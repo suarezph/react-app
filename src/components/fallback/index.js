@@ -1,11 +1,11 @@
 import React from 'react'
-import Spinner from '@images/spinner.png'
+import CircularProgress from '@material-ui/core/CircularProgress'
 import PropTypes from 'prop-types'
 
 function FullPageSpinner() {
   return (
     <div>
-      <img src={Spinner} alt="Loading..." width="250" height="250" />
+      <CircularProgress />
     </div>
   )
 }
