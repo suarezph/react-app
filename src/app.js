@@ -1,5 +1,5 @@
 import React from 'react'
-import { FullPageSpinner } from './components/fallback'
+import { FullPageSpinner } from './components/lib'
 import { useAuth } from './context/auth-context'
 
 const PrivateApp = React.lazy(() =>
@@ -7,10 +7,6 @@ const PrivateApp = React.lazy(() =>
 )
 const PublicApp = React.lazy(() => import('./screens/public-app'))
 
-/**
- * @TODO: fix login and logout redirection
- * we can set a redirection (https://reactrouter.com/web/api/Redirect) instead of PrivateApp and PublicApp
- */
 function App() {
   const { user } = useAuth()
 

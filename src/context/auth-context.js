@@ -3,7 +3,7 @@
 import * as React from 'react'
 import { queryCache } from 'react-query'
 import { useHistory } from 'react-router-dom'
-import { FullPageSpinner, FullPageErrorFallback } from '@components/fallback'
+import { FullPageSpinner, FullPageErrorFallback } from '@components/lib'
 import client from '../utils/api-client'
 import useAsync from '../utils/hooks'
 import * as auth from './auth-provider'

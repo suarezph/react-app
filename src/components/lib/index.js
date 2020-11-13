@@ -10,6 +10,24 @@ function FullPageSpinner() {
   )
 }
 
+function ErrorMessage({ error, ...props }) {
+  return (
+    <div {...props}>
+      <span>There was an error: </span>
+      <pre>{error.message}</pre>
+    </div>
+  )
+}
+
+ErrorMessage.defaultProps = {
+  props: {},
+}
+
+ErrorMessage.propTypes = {
+  error: PropTypes.oneOfType([PropTypes.object]).isRequired,
+  props: PropTypes.oneOfType([PropTypes.object]),
+}
+
 function FullPageErrorFallback({ error }) {
   return (
     <div>
@@ -23,4 +41,4 @@ FullPageErrorFallback.propTypes = {
   error: PropTypes.oneOfType([PropTypes.object]).isRequired,
 }
 
-export { FullPageSpinner, FullPageErrorFallback }
+export { FullPageSpinner, FullPageErrorFallback, ErrorMessage }
