@@ -4,8 +4,8 @@ import * as React from 'react'
 import { queryCache } from 'react-query'
 import { useHistory } from 'react-router-dom'
 import { FullPageSpinner, FullPageErrorFallback } from '@components/lib'
-import client from '../utils/api-client'
-import useAsync from '../utils/hooks'
+import client from '@utils/api-client'
+import useAsync from '@utils/api-sync'
 import * as auth from './auth-provider'
 
 const AuthContext = React.createContext()
@@ -17,11 +17,10 @@ async function bootstrapAppData() {
   const token = await auth.getToken()
   if (token) {
     const data = await client('profile', { token })
-    // console.log(data)
     // queryCache.setQueryData('list-items', data.listItems, {
     //   staleTime: 5000,
     // })
-    user = data.data
+    user = { ...data.data, ...data.meta }
   }
   return user
 }

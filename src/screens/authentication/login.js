@@ -12,7 +12,7 @@ import {
 import { Face, Fingerprint } from '@material-ui/icons'
 import { useForm } from 'react-hook-form'
 import { useAuth } from '@context/auth-context'
-import useAsync from '@utils/hooks'
+import useAsync from '@utils/api-sync'
 
 function login() {
   const { register, handleSubmit } = useForm()

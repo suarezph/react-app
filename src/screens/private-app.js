@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom'
 import { Button } from '@material-ui/core'
 import { useAuth } from '@context/auth-context'
 import PrivateRoutes from '@routes/private-routes'
-import { FullPageErrorFallback, ErrorMessage } from '@components/lib'
+import { FullPageErrorFallback, ErrorMessage, Can } from '@components/lib'
 import LanguageSelector from '@components/language-selector'
 
 function ErrorFallback({ error }) {
@@ -20,14 +20,15 @@ ErrorFallback.propTypes = {
 function privateApp() {
   const { t } = useTranslation()
   const { user, logout } = useAuth()
-
   return (
     <ErrorBoundary FallbackComponent={FullPageErrorFallback}>
       <div>
         <nav>
-          <li>
-            <Link to="/dashboard">{t('dashboard')}</Link>
-          </li>
+          {Can(user.abilities.borrower_loans, 'create_loan') && (
+            <li>
+              <Link to="/dashboard">{t('dashboard')}</Link>
+            </li>
+          )}
           <li>
             <Link to="/support">{t('support')}</Link>
           </li>

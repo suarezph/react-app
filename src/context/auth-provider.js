@@ -1,5 +1,7 @@
 /* eslint no-shadow: [2, { "allow": ["error", "data"] }] */
 /* eslint-env es6 */
+import clientToken from '../utils/api-client'
+
 const localStorageKey = '__auth_provider_token__'
 
 async function getToken() {
@@ -27,13 +29,16 @@ async function client(endpoint, data) {
     })
 }
 
-function handleUserResponse({ data }) {
-  window.localStorage.setItem(localStorageKey, data.access_token)
-  /*
-   * @TODO:
-   * fetch profile here to return then set the data in the context
-   */
-  return data
+async function handleUserResponse({ data }) {
+  let user = null
+  const token = data.access_token
+
+  if (data) {
+    window.localStorage.setItem(localStorageKey, token)
+    user = await clientToken('profile', { token })
+  }
+
+  return { ...user.data, ...user.meta }
 }
 
 function login({ email, password }) {

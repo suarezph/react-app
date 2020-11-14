@@ -3,6 +3,11 @@ import Backend from 'i18next-http-backend'
 
 // https://devapi.bluecell.global/v1/lang?locale=en
 
+/*
+ * @TODO: when running dev it should point to locales files and prod will be api call
+ * need to learn the settings in i18n
+ */
+
 i18n.use(Backend).init({
   lng: 'en',
   fallbackLng: 'en',

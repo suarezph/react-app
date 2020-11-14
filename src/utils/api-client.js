@@ -1,7 +1,7 @@
 /* eslint no-shadow: [2, { "allow": ["error", "data"] }] */
 /* eslint-env es6 */
 import { queryCache } from 'react-query'
-import * as auth from '../context/auth-provider'
+import * as auth from '@context/auth-provider'
 
 const apiURL = process.env.REACT_APP_API_URL
 
