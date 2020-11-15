@@ -31,7 +31,8 @@
     "react-query": "^2.26.2",
     "react-query-devtools": "^2.6.3",
     "react-router": "^5.2.0",
-    "react-router-dom": "^5.2.0"
+    "react-router-dom": "^5.2.0",
+    "bluecell-themes": "git+ssh://git@repo.plus65host.net:bluecell/bluecell-themes.git#master"
   },
   "devDependencies": {
     "@babel/core": "^7.12.3",

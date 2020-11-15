@@ -17,6 +17,12 @@ ErrorFallback.propTypes = {
   error: PropTypes.oneOfType([PropTypes.object]).isRequired,
 }
 
+/**
+ * @TODO: user session expired
+ * Login to dev.blucell
+ * Login to this app with same user you use in dev.blueceel
+ * Try to refresh this app and CORS or issue will show up
+ */
 function privateApp() {
   const { t } = useTranslation()
   const { user, logout } = useAuth()
@@ -24,7 +30,7 @@ function privateApp() {
     <ErrorBoundary FallbackComponent={FullPageErrorFallback}>
       <div>
         <nav>
-          {Can(user.abilities.borrower_loans, 'create_loan') && (
+          {Can(user.abilities?.borrower_loans, 'create_loan') && (
             <li>
               <Link to="/dashboard">{t('dashboard')}</Link>
             </li>
