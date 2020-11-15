@@ -41,6 +41,12 @@ FullPageErrorFallback.propTypes = {
   error: PropTypes.oneOfType([PropTypes.object]).isRequired,
 }
 
-const Can = (abilites = [], comparison) => abilites.includes(comparison)
+const isUserAuthorised = (abilites = [], comparison) =>
+  abilites.includes(comparison)
 
-export { FullPageSpinner, FullPageErrorFallback, ErrorMessage, Can }
+export {
+  FullPageSpinner,
+  FullPageErrorFallback,
+  ErrorMessage,
+  isUserAuthorised,
+}
