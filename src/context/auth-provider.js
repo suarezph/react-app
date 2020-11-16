@@ -1,8 +1,9 @@
 /* eslint no-shadow: [2, { "allow": ["error", "data"] }] */
 /* eslint-env es6 */
-import clientToken from '../utils/api-client'
+import clientToken from '@utils/api-client'
+import storage from '@constants/local-storage-keys'
 
-const localStorageKey = '__auth_provider_token__'
+const localStorageKey = storage.authToken
 
 async function getToken() {
   return window.localStorage.getItem(localStorageKey)

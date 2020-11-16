@@ -8,6 +8,7 @@
       "extensions": [".ios.js", ".android.js", ".js", ".json"],
       "alias": {
         "@src": "./src",
+        "@constants": "./src/constants",
         "@components": "./src/components",
         "@context": "./src/context",
         "@utils": "./src/utils",
